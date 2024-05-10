@@ -75,11 +75,8 @@ def Balance():
 
     print(x)
     bal = bytes(x)
-
     balance=int(bal)
-
     print(type(balance))
-
     return balance
 
 def CardID():

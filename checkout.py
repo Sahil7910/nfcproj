@@ -1,3 +1,4 @@
+import datetime
 import tkinter as tk
 from tkinter import *
 from tkinter import messagebox
@@ -30,6 +31,7 @@ class CheckOut():
         self.mobile.set(mobileno)
         self.amount.set(amount)
         self.cardid.set(cardid)
+        date= datetime.date.today()
 
         card_label = Label(self.root, text="Card:", font=('calibre', 13, 'bold')).place(x=135, y=50)
         card_entry = Entry(self.root,  state=DISABLED ,textvariable = self.cardid, font=('calibre', 13, 'bold')).place(x=190, y=50)
@@ -58,12 +60,10 @@ class CheckOut():
         tree.heading("# 3", text="Amount")
 
         # Insert the data in Treeview widget
-        tree.insert('', 'end', text="1", values=('08-05-2024', '1234', '5000'))
+        tree.insert('', 'end', text="1", values=(date, cardid, amount))
         tree.insert('', 'end', text="2", values=('07-05-2024', '4567', '2000'))
 
         tree.place(x=70, y=310)
-
-
 
         topup_btn = Button(self.root, text='Top Up', command=self.top, font=('calibre', 13, 'bold')).place(x=100, y=420)
 
