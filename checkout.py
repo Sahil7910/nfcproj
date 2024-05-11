@@ -4,7 +4,11 @@ from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
 from blockcard import BlockCard
+from tkinter import messagebox
 
+from sqlalchemy import engine, and_
+from sqlalchemy.orm import sessionmaker
+from DataBase import *
 from topup import TopUp
 from main import *
 
@@ -18,7 +22,8 @@ class CheckOut():
         cname=name()
         mobileno=mobile()
         amount=Balance()
-        cardid=CardID()
+        cardid=uid()
+
 
         self.cname = tk.StringVar()
         self.mobile = tk.StringVar()
@@ -32,6 +37,7 @@ class CheckOut():
         self.amount.set(amount)
         self.cardid.set(cardid)
         date= datetime.date.today()
+
 
         card_label = Label(self.root, text="Card:", font=('calibre', 13, 'bold')).place(x=135, y=50)
         card_entry = Entry(self.root,  state=DISABLED ,textvariable = self.cardid, font=('calibre', 13, 'bold')).place(x=190, y=50)
@@ -49,6 +55,7 @@ class CheckOut():
         amount_entry = Entry(self.root,textvariable=self.amount2, font=('calibre', 13, 'bold')).place(x=190, y=210)
 
         checkout_btn = Button(self.root, text='Check Out',command=self.onClick,font=('calibre', 13, 'bold')).place(x=310, y=250)
+
 
 
         tree = ttk.Treeview(self.root, column=("c1", "c2", "c3"), show='headings', height=3)
@@ -70,6 +77,9 @@ class CheckOut():
         block_btn = Button(self.root, text='Block', command=self.block, font=('calibre', 13, 'bold')).place(x=230, y=420)
 
         back_btn = Button(self.root, text='Back',  font=('calibre', 13, 'bold')).place(x=350, y=420)
+
+
+
 
     def onClick(self):
         amount= self.amount.get()
