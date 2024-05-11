@@ -1,9 +1,14 @@
 import tkinter as tk
 from tkinter import *
+from tkinter import messagebox
 
+from sqlalchemy import engine, and_
+from sqlalchemy.orm import sessionmaker
+from DataBase import *
 from addmember import AddMember
 from admin import Admin
 from checkout import CheckOut
+from main import *
 
 
 class TapUser():
@@ -20,10 +25,21 @@ class TapUser():
 
 
     def submit(self):
-
+        cardid = uid()
         self.root.withdraw()
+        Session = sessionmaker(bind=engine)
+        session = Session()
 
-        checkout= CheckOut(tk.Tk())
+        # Query for check whether card is present or not:
+        result = session.query(Members).filter(and_(Members.cardid == cardid, Members.status == 1))
+        for row in result:
+            if row is not None:
+                checkout= CheckOut(tk.Tk())
+                break
+        else:
+                messagebox.showerror("error","Card Id Not Found!!!")
+
+
 
     def admin(self):
 

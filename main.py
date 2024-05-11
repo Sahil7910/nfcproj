@@ -1,16 +1,30 @@
-from unittest import result
+
 
 from py_acr122u import nfc
 
-
-
 reader = nfc.Reader()
 reader.connect()
-uid=reader.print_data(reader.get_uid())
-x = reader.read_binary_blocks(9,4)
+uidno = reader.get_uid()
+
+print(uidno)
+
+def uid():
+    reader = nfc.Reader()
+    reader.connect()
+    x=reader.get_uid()
+    uidno = ''.join(map(str, x))
+    return uidno
+
+# x = reader.read_binary_blocks(9,4)
 # y = reader.read_binary_blocks(7,4)
 # z = reader.read_binary_blocks(8,4)
-print(uid)
+
+
+# arr = []
+# # iterating the value
+# for value in x:
+#     arr.append( str(value) )
+# print(arr)
 
 
 # name=bytes(x)
@@ -23,7 +37,6 @@ print(uid)
 
 # name = 'ayes'
 # number='7020169938'
-# cardid='1234'
 # n_bytes=bytearray(cardid, 'utf-8')
 # print(type(n_bytes))
 
@@ -49,18 +62,14 @@ print(uid)
 def name():
     reader = nfc.Reader()
     reader.connect()
-    uid = reader.print_data(reader.get_uid())
     x = reader.read_binary_blocks(6, 4)
 
-    print(x)
     f_name = bytes(x)
-
     return f_name
 
 def mobile():
     reader = nfc.Reader()
     reader.connect()
-    uid = reader.print_data(reader.get_uid())
     x = reader.read_binary_blocks(7, 4)
 
     print(x)
@@ -70,22 +79,22 @@ def mobile():
 def Balance():
     reader = nfc.Reader()
     reader.connect()
-    uid = reader.print_data(reader.get_uid())
+
     x = reader.read_binary_blocks(8, 4)
 
-    print(x)
     bal = bytes(x)
     balance=int(bal)
-    print(type(balance))
     return balance
+    # else:
 
-def CardID():
-    reader = nfc.Reader()
-    reader.connect()
-    uid = reader.print_data(reader.get_uid())
-    x = reader.read_binary_blocks(9, 4)
 
-    print()
-    cardid = bytes(x)
-    return cardid
+# def CardID():
+#     reader = nfc.Reader()
+#     reader.connect()
+#     uid = reader.print_data(reader.get_uid())
+#     x = reader.read_binary_blocks(9, 4)
+#
+#     print()
+#     cardid = bytes(x)
+#     return cardid
 
