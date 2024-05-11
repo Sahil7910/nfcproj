@@ -88,13 +88,5 @@ def Balance():
     # else:
 
 
-# def CardID():
-#     reader = nfc.Reader()
-#     reader.connect()
-#     uid = reader.print_data(reader.get_uid())
-#     x = reader.read_binary_blocks(9, 4)
-#
-#     print()
-#     cardid = bytes(x)
-#     return cardid
+
 
