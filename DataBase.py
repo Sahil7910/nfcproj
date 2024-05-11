@@ -40,7 +40,6 @@ conn = engine.connect()
 # ins = users.insert()
 # ins = users.insert().values(name = 'Ravi', password = 'Kapoor')
 
-# result = conn.execute(ins)
 
 
 
