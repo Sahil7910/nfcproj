@@ -42,12 +42,6 @@ conn = engine.connect()
 
 # result = conn.execute(ins)
 
-# s = students.select()
-# conn = engine.connect()
-# result = conn.execute(s)
-#
-# for row in result:
-#    print (row)
 
 
 
