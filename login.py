@@ -50,6 +50,7 @@ class Login:
 
         Session = sessionmaker(bind=engine)
         session = Session()
+        #authenticate user
         result = session.query(Users).filter(and_(Users.name == userid, Users.password == password))
         for row in result:
 

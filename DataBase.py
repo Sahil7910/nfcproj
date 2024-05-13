@@ -26,14 +26,7 @@ class Members(Base):
 conn = engine.connect()
 
 
-# students = Table(
-#    'students', meta,
-#    Column('id', Integer, primary_key = True),
-#    Column('name', String(50),),
-#    Column('lastname', String(50)),
-# )
-#
-# meta.create_all(engine)
+
 
 
 # 'users', meta
